@@ -64,19 +64,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const Menu = () => {
+type MenuProp = {
+  open: boolean;
+  onDrawerClose: () => void;
+}
+
+const Menu = ({open, onDrawerClose}:MenuProp) => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
 
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={onDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>

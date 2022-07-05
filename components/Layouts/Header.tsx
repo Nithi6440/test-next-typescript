@@ -30,13 +30,13 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+type HeaderProp = {
+  open: boolean;
+  onDrawerOpen:() => void;
+};
 
-const Header = () => {
-  const [open, setOpen] = React.useState(false);
+const Header = ({open, onDrawerOpen}:HeaderProp) => {
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
   return (
     <AppBar position="fixed" open={open}>
@@ -44,7 +44,7 @@ const Header = () => {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={onDrawerOpen}
             edge="start"
             sx={{
               marginRight: 5,
