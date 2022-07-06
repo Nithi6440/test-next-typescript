@@ -12,6 +12,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import FeedIcon from '@mui/icons-material/Feed';
 
 const drawerWidth = 240;
 
@@ -69,9 +72,10 @@ type MenuProp = {
   onDrawerClose: () => void;
 }
 
-const Menu = ({open, onDrawerClose}:MenuProp) => {
+export default function Menu({open, onDrawerClose}:MenuProp) {
   const theme = useTheme();
-
+  const menuName = ['Home', 'Stock']
+  const path = ['/','stock']
 
   return (
     <Drawer variant="permanent" open={open}>
@@ -82,7 +86,9 @@ const Menu = ({open, onDrawerClose}:MenuProp) => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          
+          {menuName.map((text, index) => (
+            
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -98,7 +104,7 @@ const Menu = ({open, onDrawerClose}:MenuProp) => {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <HomeIcon /> : <FeedIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -106,7 +112,7 @@ const Menu = ({open, onDrawerClose}:MenuProp) => {
           ))}
         </List>
         <Divider />
-        <List>
+        {/* <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
@@ -129,9 +135,7 @@ const Menu = ({open, onDrawerClose}:MenuProp) => {
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
   );
 }
-
-export default Menu;
