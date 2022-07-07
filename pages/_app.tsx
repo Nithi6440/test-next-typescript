@@ -11,7 +11,6 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
-
 function MyApp({ Component, pageProps}: AppPropsWithLayout) {
   if(Component.getLayout){
     return Component.getLayout(<Component {...pageProps} />)

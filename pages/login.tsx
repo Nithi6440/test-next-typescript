@@ -1,4 +1,5 @@
-import React from "react";
+import React, { ReactElement } from "react";
+
 
 type Props = {};
 
@@ -7,3 +8,8 @@ const login = ({}: Props) => {
 };
 
 export default login;
+
+login.getLayout = function PageLayout(page: ReactElement) {
+  console.log(page)
+  return <>{page}</>;
+};
